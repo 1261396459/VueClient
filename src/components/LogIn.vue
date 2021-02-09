@@ -6,6 +6,7 @@
 </template>
 
 <script>
+  import {client} from '../api/base.js'
   export default{
     name:'LogIn',
     data(){
@@ -14,13 +15,27 @@
       }
     },
     methods:{
-      async login(){
-        this.$store.dispatch('UserLogin',{
-           name:this.name,
-           isLogin:true
-        })
+      login(){
+        this._login()
+      },
+
+      async _login(){
+        let data = new URLSearchParams()//序列化
+        data.append('name',this.name)
+        data.append('id',this.$socket.id)
+        const rm = await client.post('/users/login',data)
         this.name=''
-        this.$router.replace("/")
+        if(rm.status == '200'){
+          this.$store.dispatch('UserLogin',{
+             name:this.name,
+             isLogin:true
+          })
+          this.$router.replace('/')
+        }
+        else{
+          alert(rm.statusText)
+        }
+        return;
       }
     }
   }
