@@ -8,12 +8,19 @@
 <script>
   export default{
     name:'LogIn',
-    data:{
-      name:''
+    data(){
+      return {
+        name:''
+      }
     },
     methods:{
-      login:()=>{
+      async login(){
+        this.$store.dispatch('UserLogin',{
+           name:this.name,
+           isLogin:true
+        })
         this.name=''
+        this.$router.replace("/")
       }
     }
   }
