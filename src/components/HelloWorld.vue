@@ -13,7 +13,8 @@ export default {
       msg: '',
       name: '',
       id:'',
-      msgList:[]
+      msgList:[],
+      isLogin:false
     }
   },
   methods:{
@@ -24,14 +25,18 @@ export default {
   },
   sockets:{
     'connect':function(){
-      this.id = this.$socket.id;
+      this.id = this.$socket.id
     },
     'chat message':function(data){  //监听message事件，方法是后台定义和提供的
         this.msgList.push(data)
     }
   },
   mounted(){
-
+    // 登录检查
+    this.isLogin = this.$store.state.token == null ? false : this.$store.state.token.isLogin
+    if (!this.isLogin) {
+      this.$router.replace('/login')
+    }
   }
  }
 </script>
