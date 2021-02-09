@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import VueSocketio from 'vue-socket.io'
 import SocketIO from 'socket.io-client'
+import store from './store'
 
 Vue.use(new VueSocketio({
     debug: true,
@@ -16,6 +17,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
