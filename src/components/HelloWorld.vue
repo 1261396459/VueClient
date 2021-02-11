@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
+    <p >我：{{name}}</p>
+    <div v-for="(key,value) in userList"><p>{{key+' : '+value}}</p><button @click="">通信</button></div>
   <input v-model="msg"><button @click="setM">获取数据</button>
-  <p v-for="item in msgList">{{item.id + " say: " + item.msg}}</p>
+  <p v-for="item in msgList">{{item.name + " say: " + item.msg}}</p>
   </div>
 </template>
 
@@ -11,30 +13,37 @@ export default {
   data () {
     return {
       msg: '',
-      name: '',
-      id:'',
+      name: this.$store.state.token.name,
+      id: this.$socket.id,
       msgList:[],
-      isLogin:false
+      userList:{},
     }
   },
   methods:{
     setM(){
       this.$socket.emit('chat message',this.msg)
       this.msg=''
-    }
+      console.log(this.name)
+    },
+    
   },
   sockets:{
     'connect':function(){
       this.id = this.$socket.id
+      this.$socket.emit('update userlist')
     },
-    'chat message':function(data){  //监听message事件，方法是后台定义和提供的
-        this.msgList.push(data)
+    'chat message':function(data){  //向所有用户发送message
+      this.msgList.push(data)
+    },
+    'update userlist':function(data){
+      console.log(data)
+      this.userList = data
     }
   },
-  mounted(){
+  beforeCreate(){
     // 登录检查
-    this.isLogin = this.$store.state.token == null ? false : this.$store.state.token.isLogin
-    if (!this.isLogin) {
+    let isLogin = this.$store.state.token == null ? false : this.$store.state.token.isLogin
+    if (!isLogin) {
       this.$router.replace('/login')
     }
   }

@@ -20,14 +20,16 @@
       },
 
       async _login(){
+        let name = this.name
+        this.name=''
         let data = new URLSearchParams()//序列化
-        data.append('name',this.name)
+        data.append('name',name)
         data.append('id',this.$socket.id)
         const rm = await client.post('/users/login',data)
-        this.name=''
+
         if(rm.status == '200'){
           this.$store.dispatch('UserLogin',{
-             name:this.name,
+             name,
              isLogin:true
           })
           this.$router.replace('/')
