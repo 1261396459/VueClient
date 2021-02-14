@@ -32,6 +32,7 @@
              name,
              isLogin:true
           })
+          this.$socket.emit('update userlist');
           this.$router.replace('/')
         }
         else{
