@@ -6,8 +6,12 @@
 </template>
 
 <script>
+  import eruda from 'eruda'
 export default {
-  name: 'App'
+  name: 'App',
+  mounted() {
+    eruda.init()
+  }
 }
 </script>
 
