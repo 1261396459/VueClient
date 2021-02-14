@@ -248,7 +248,7 @@ export default {
     }
   },
   mounted() {
-    setTimeout(this.getPower,2000)
+    //setTimeout(this.getPower,2000)
   }
 };
 </script>
