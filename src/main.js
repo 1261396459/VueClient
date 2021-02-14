@@ -6,10 +6,11 @@ import router from './router'
 import VueSocketio from 'vue-socket.io'
 import SocketIO from 'socket.io-client'
 import store from './store'
+import host from './api/config.js'
 
 Vue.use(new VueSocketio({
     debug: true,
-    connection: SocketIO('http://127.0.0.1:3000/')
+    connection: SocketIO(host.nowHost())
 }))
 Vue.config.productionTip = false
 

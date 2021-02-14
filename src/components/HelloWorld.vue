@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <p>我：{{ name }}</p>
+    <p>我：{{ name + ' : ' + id}}</p>
     <div v-for="(key, value) in userList">
       <p>{{ key + ' : ' + value }}</p>
       <button @click="StartCall(value, true)">通信</button>
