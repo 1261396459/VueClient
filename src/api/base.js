@@ -1,7 +1,8 @@
 import axios from 'axios';
+import address from 'address';
 
-export const apiHost = "/api";
-export const Host = 'http://127.0.0.1:3000';
+export const apiHost = '/api';
+export const Host = (address.ip() || 'http://192.168.2.105')+':3000';
 
 export const client = axios.create({
   baseURL: Host,
