@@ -2,6 +2,32 @@
 
 > A Vue.js project
 
+## Build Step
+### Download
+[npm](https://nodejs.org/en/download/)
+
+### Global Install
+npm install webpack -g
+npm install webpack webpack-cli -g
+npm install vue-cli -g
+
+### Vue-Cli Install
+vue init webpack socket-client
+
+### Git Install
+git init
+git add .
+git remote add origin https://github.com/1261396459/VueClient.git
+git push -u origin master
+
+### Add Dependency
+npm install axios --save
+npm install vuex --save
+npm install vue-socket.io --save
+npm install socket.io-client --save
+npm install eruda --save
+npm install address --save
+
 ## Build Setup
 
 ``` bash
