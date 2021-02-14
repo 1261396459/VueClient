@@ -10,7 +10,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "address": "^1.1.2",
     "axios": "^0.21.1",
+    "eruda": "^2.4.1",
     "socket.io-client": "^3.1.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
