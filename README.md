@@ -21,12 +21,14 @@ git remote add origin https://github.com/1261396459/VueClient.git
 git push -u origin master
 
 ### Add Dependency
-npm install axios --save
-npm install vuex --save
-npm install vue-socket.io --save
-npm install socket.io-client --save
-npm install eruda --save
-npm install address --save
+npm install --save axios
+npm install --save vuex
+npm install --save vue-socket.io
+npm install --save socket.io-client
+npm install --save eruda
+npm install --save address
+npm install --save ant-design-vue
+
 
 ## Build Setup
 
